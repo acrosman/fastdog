@@ -46,7 +46,7 @@ function contentPrepComplete() {
     if (file.localName.endsWith('/index.html')) {
       parsers.loadTemplate('map', {
         map: siteIndex.map,
-      }).then(response =>
+      }).then((response) => {
         parsers.loadTemplate('index', {
           page: {
             content: file.html,
@@ -55,12 +55,12 @@ function contentPrepComplete() {
             map: response,
             tags: siteIndex.tags,
           },
-        }),
-      ).then(response =>
+        });
+      }).then((response) => {
         parsers.loadTemplate('html', {
           page: response,
-        }),
-      ).then((fullResponse) => {
+        });
+      }).then((fullResponse) => {
         fileHandlers.outputFile(siteConfig, file, fullResponse);
       });
     } else {
